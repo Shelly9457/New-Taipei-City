@@ -103,9 +103,14 @@ body {
 .interduce__tilte {
     color: var(--textcolortwo);
     font-weight: bold;
-    
 }
-
+/* product */
+.product__item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 /* order */
 .order__img {
     border-radius: 12px;

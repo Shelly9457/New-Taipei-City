@@ -17,6 +17,10 @@ const interduce_one = new Swiper('.interduce__box', {
     loop: true,
     effect: 'cube',
     grabCursor: true,
+    autoplay: {
+        deplay: 2500,
+        disableOnInteraction: false
+    },
     cubeEffect: {
         shadow: true,
         slideShadows: true,
@@ -24,6 +28,35 @@ const interduce_one = new Swiper('.interduce__box', {
         shadowScale: 0,
     }
 })
+
+PRODUCT.forEach(data => {
+    document.querySelector('.product__container').innerHTML += `
+    <div class="col-lg-6 col-sm-12 product__item mb-5">
+        <h1 class="fw" style="color:var(--colorone)">${data.name}</h1>
+        <div class="product__box w-100">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide d-flex justify-content-center
+                align-items-center">
+                    <img src="${data.img}" class="d-block rounded-5" style="width:80%">
+                </div>
+                <div class="swiper-slide p-5 ">
+                    <img src="${data.img2}" class="w-50">
+                    <p class="fs-4">${data.text}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+})
+const product = new Swiper('.product__box', {
+    loop: true,
+    effect: 'flip',
+    flipEffect: {
+        slideShadows: true,
+        limitRotation: true,
+    }
+})
+
 ORDERDATA.forEach((data, index) => {
     document.querySelector('.order__box').innerHTML += `
         <div class="col-xl-6 col-sm-12 my-5">
@@ -61,7 +94,7 @@ function openshop() {
                 </div>
             </div>
         `
-        sum += price
+            sum += price
         }
         document.querySelector('.sum').innerText = `總計$${sum}`
     })
